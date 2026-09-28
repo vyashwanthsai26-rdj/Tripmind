@@ -1,0 +1,22 @@
+{
+  "name": "tripmind",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently --shell \"powershell.exe\" -k -n api,web -c blue,green \"npm run dev --workspace=@tripmind/server\" \"npm run dev --workspace=@tripmind/client\"",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server",
+    "test": "npm test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
